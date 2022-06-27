@@ -5,6 +5,7 @@ dependencies:
   - python=3.9
   - jupyter-book
   - numpy
+  - matplotlib
   - pandas
   - xarray
   - xesmf
@@ -16,6 +17,7 @@ dependencies:
   - intake
   - intake-esm
   - fsspec
+  - gcsfs
   - pip
   - pip:
       - sphinx-pythia-theme
