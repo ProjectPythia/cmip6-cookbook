@@ -1,6 +1,7 @@
 # Cookbook Template
 
 [![nightly-build](https://github.com/ProjectPythiaTutorials/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythiaTutorials/cookbook-template/actions/workflows/nightly-build.yaml)
+[![Binder](https://binder-staging.2i2c.cloud/badge_logo.svg)](https://binder-staging.2i2c.cloud/v2/gh/r-ford/cmip6-cookbook.git/main)
 
 This is a template for creating [Project Pythia](https://projectpythia.org) Cookbooks.
 
