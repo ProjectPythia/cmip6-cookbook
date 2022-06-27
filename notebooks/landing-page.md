@@ -1,19 +1,16 @@
-# (Replace_with_your_title) Cookbook
+# CMIP6 Cookbook
 
-This Project Pythia Cookbook covers ... (replace `...` with the main subject of your cookbook ... e.g., *working with radar data in Python*)
+This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
 
 ## Motivation
 
-(Add a few sentences stating why this cookbook will be useful. What skills will you, "the chef", gain once you have reached the end of the cookbook?)
+
 
 ## Structure
-(State one or more sections that will comprise the notebook. E.g., *This cookbook is broken up into two main sections - "Foundations" and "Example Workflows."* Then, describe each section below.)
 
-### Section 1 ( Replace with the title of this section, e.g. "Foundations" )
-(Add content for this section, e.g., "The foundational content includes ... ")
+### Example workflows
 
-### Section 2 ( Replace with the title of this section, e.g. "Example workflows" )
-(Add content for this section, e.g., "Example workflows include ... ")
+
 
 ## Running the Notebooks
 You can either run the notebook using [Binder](https://mybinder.org/) or on your local machine.
@@ -40,19 +37,19 @@ If you are interested in running this material locally on your computer, you wil
 
 (Replace "cookbook-example" with the title of your cookbooks)   
 
-1. Clone the `https://github.com/ProjectPythiaTutorials/cookbook-example` repository:
+1. Clone the `https://github.com/ProjectPythiaTutorials/cmip6-cookbook` repository:
 
    ```bash
-    git clone https://github.com/ProjectPythiaTutorials/cookbook-example.git
+    git clone https://github.com/ProjectPythiaTutorials/cmip6-cookbook.git
     ```  
-1. Move into the `cookbook-example` directory
+1. Move into the `cmip6-cookbook` directory
     ```bash
-    cd cookbook-example
+    cd cmip6-cookbook
     ```  
 1. Create and activate your conda environment from the `environment.yml` file
     ```bash
     conda env create -f environment.yml
-    conda activate cookbook-example
+    conda activate cmip6-cookbook-dev
     ```  
 1.  Move into the `notebooks` directory and start up Jupyterlab
     ```bash

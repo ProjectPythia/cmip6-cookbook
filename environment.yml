@@ -1,8 +1,21 @@
-name: cookbook-dev
+name: cmip6-cookbook-dev
 channels:
   - conda-forge
 dependencies:
+  - python=3.9
   - jupyter-book
+  - numpy
+  - pandas
+  - xarray
+  - xesmf
+  - numba
+  - cartopy
+  - dask
+  - dask-gateway
+  - tqdm
+  - intake
+  - intake-esm
+  - fsspec
   - pip
   - pip:
       - sphinx-pythia-theme
