@@ -9,6 +9,7 @@ dependencies:
   - xesmf
   - cartopy
   - dask
+  - dask-gateway
   - tqdm
   - intake
   - fsspec
