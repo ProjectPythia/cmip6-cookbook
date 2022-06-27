@@ -56,7 +56,6 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="(Replace_with_your_title) Cookbook" href="landing-page.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -175,19 +174,19 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="landing-page.html">
-   (Replace_with_your_title) Cookbook
+   CMIP6 Cookbook
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Introduction
+  Example workflows
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Project Pythia Notebook Template
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ecs-cmip6.html">
+   Estimating Equilibrium Climate Sensitivity in CMIP6 models
   </a>
  </li>
 </ul>
@@ -244,14 +243,14 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/ProjectPythia/pythia-foundations"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/r-ford/cmip6-cookbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ProjectPythia/pythia-foundations/issues/new?title=Issue%20on%20page%20%2Fnotebook-template.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/r-ford/cmip6-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebook-template.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/ProjectPythia/pythia-foundations/edit/main/notebook-template.ipynb"><button
+        <a class="edit-button" href="https://github.com/r-ford/cmip6-cookbook/edit/main/notebook-template.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -271,7 +270,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ProjectPythia/pythia-foundations/main?urlpath=lab/tree/notebook-template.ipynb"><button type="button"
+        <a class="binder-button" href="https://binder-staging.2i2c.cloud/v2/gh/r-ford/cmip6-cookbook/main?urlpath=lab/tree/notebook-template.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -472,6 +471,11 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello world!
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="a-content-subsection">
 <h3>A content subsection<a class="headerlink" href="#a-content-subsection" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
@@ -502,8 +506,8 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <div class="section" id="header-levels">
 <h6>header levels<a class="headerlink" href="#header-levels" title="Permalink to this headline"><i class="fas fa-link"></i></a></h6>
 <p>as well <span class="math notranslate nohighlight">\(m = a * t / h\)</span> text! Similarly, you have access to other <span class="math notranslate nohighlight">\(\LaTeX\)</span> equation <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Typesetting%20Equations.html"><strong>functionality</strong></a> via MathJax (demo below from link),</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2b708f89-b2b2-4e4d-9cfa-4a1184a25600">
-<span class="eqno">(1)<a class="headerlink" href="#equation-2b708f89-b2b2-4e4d-9cfa-4a1184a25600" title="Permalink to this equation"><i class="fas fa-link"></i></a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9350aaee-ffcc-4b67-b83e-02bbd6d2f9c3">
+<span class="eqno">()<a class="headerlink" href="#equation-9350aaee-ffcc-4b67-b83e-02bbd6d2f9c3" title="Permalink to this equation"><i class="fas fa-link"></i></a></span>\[\begin{align}
 \dot{x} &amp; = \sigma(y-x) \\
 \dot{y} &amp; = \rho x - y - xz \\
 \dot{z} &amp; = -\beta z + xy
@@ -581,14 +585,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 
               </div>
               <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="landing-page.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">(Replace_with_your_title) Cookbook</p>
-        </div>
-    </a>
+<div class='prev-next-area'>
 </div>
             </div>
           </div>
