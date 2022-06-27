@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Pythia Foundations
+title: CMIP6 Cookbook
 author: the <a href="https://projectpythia.org/">Project Pythia</a> Community
 logo: images/logos/pythia_logo-white-rtext.svg
 email: projectpythia@ucar.edu
@@ -39,7 +39,7 @@ sphinx:
       use_issues_button: true
       use_repository_button: true
       use_edit_page_button: true
-      github_url: https://github.com/ProjectPythia
+      github_url: https://github.com/ProjectPythiaTutorials
       twitter_url: https://twitter.com/project_pythia
       icon_links:
         - name: YouTube
@@ -47,7 +47,7 @@ sphinx:
           icon: fab fa-youtube-square
           type: fontawesome
       launch_buttons:
-        binderhub_url: https://mybinder.org
+        binderhub_url: https://binder-staging.2i2c.cloud
         notebook_interface: jupyterlab
       extra_navbar: |
         Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
