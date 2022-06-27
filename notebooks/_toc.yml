@@ -1,6 +1,6 @@
 format: jb-book
 root: landing-page
 parts:
-  - caption: Introduction
+  - caption: Example workflows
     chapters:
-      - file: notebook-template
+      - file: ecs-cmip6
