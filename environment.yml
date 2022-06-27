@@ -2,6 +2,7 @@ name: cmip6-cookbook-dev
 channels:
   - conda-forge
 dependencies:
+  - python=3.9
   - jupyter-book
   - numpy
   - pandas
