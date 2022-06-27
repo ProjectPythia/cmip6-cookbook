@@ -6,7 +6,7 @@ on:
       environment_name:
         description: 'Name of conda environment to activate'
         required: false
-        default: 'cookbook-dev'
+        default: 'cmip6-cookbook-dev'
         type: string
       environment_file:
         description: 'Name of conda environment file'
