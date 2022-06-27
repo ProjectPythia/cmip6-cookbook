@@ -59,7 +59,7 @@ sphinx:
         - name: Foundations
           url: https://foundations.projectpythia.org
         - name: Cookbooks
-          url: https://projectpythia.org/cookbook-gallery.html
+          url: projectpythiatutorials.github.io
         - name: Resources
           url: https://projectpythia.org/resource-gallery.html
         - name: Community
