@@ -7,6 +7,7 @@ dependencies:
   - pandas
   - xarray
   - xesmf
+  - numba
   - cartopy
   - dask
   - dask-gateway
