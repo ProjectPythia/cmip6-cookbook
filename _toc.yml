@@ -5,7 +5,9 @@ parts:
     chapters:
       - file: notebooks/foundations/intake-esm
       - file: notebooks/foundations/google-cloud-basic
+      - file: notebooks/foundations/esgf-opendap
   - caption: Example workflows
     chapters:
       - file: notebooks/example-workflows/ecs-cmip6
       - file: notebooks/example-workflows/gmst
+      - file: notebooks/example-workflows/precip-freq

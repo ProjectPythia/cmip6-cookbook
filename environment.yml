@@ -9,6 +9,7 @@ dependencies:
   - pandas
   - xarray
   - xesmf
+  - xhistogram
   - numba
   - cartopy
   - dask
