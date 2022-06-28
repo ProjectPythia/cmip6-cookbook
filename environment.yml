@@ -20,6 +20,7 @@ dependencies:
   - cftime
   - nc-time-axis
   - gcsfs
+  - seaborn
   - pip
   - pip:
       - sphinx-pythia-theme
