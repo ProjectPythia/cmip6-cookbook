@@ -3,7 +3,7 @@
 
 title: CMIP6 Cookbook
 author: the <a href="https://projectpythia.org/">Project Pythia</a> Community
-logo: images/logos/pythia_logo-white-rtext.svg
+logo: notebooks/images/logos/pythia_logo-white-rtext.svg
 email: projectpythia@ucar.edu
 copyright: '2022'
 
@@ -28,7 +28,7 @@ parse:
 
 sphinx:
   config:
-    html_favicon: images/icons/favicon.ico
+    html_favicon: notebooks/images/icons/favicon.ico
     html_last_updated_fmt: '%-d %B %Y'
     html_theme: sphinx_pythia_theme
     html_permalinks_icon: '<i class="fas fa-link"></i>'
@@ -65,6 +65,6 @@ sphinx:
         - name: Community
           url: https://projectpythia.org/index.html#join-us
       footer_logos:
-        NCAR: images/logos/NCAR-contemp-logo-blue.svg
-        Unidata: images/logos/Unidata_logo_horizontal_1200x300.svg
-        UAlbany: images/logos/UAlbany-A2-logo-purple-gold.svg
+        NCAR: notebooks/images/logos/NCAR-contemp-logo-blue.svg
+        Unidata: notebooks/images/logos/Unidata_logo_horizontal_1200x300.svg
+        UAlbany: notebooks/images/logos/UAlbany-A2-logo-purple-gold.svg
