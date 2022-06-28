@@ -3,4 +3,5 @@ root: README
 parts:
   - caption: Example workflows
     chapters:
+      - file: notebooks/google-cloud-basic
       - file: notebooks/ecs-cmip6
