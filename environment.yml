@@ -17,6 +17,7 @@ dependencies:
   - intake
   - intake-esm
   - fsspec
+  - nc-time-axis
   - gcsfs
   - pip
   - pip:
