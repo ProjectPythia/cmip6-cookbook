@@ -1,4 +1,4 @@
-# Cookbook Template
+# CMIP6 Cookbook
 
 [![nightly-build](https://github.com/ProjectPythiaTutorials/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythiaTutorials/cookbook-template/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder-staging.2i2c.cloud/badge_logo.svg)](https://binder-staging.2i2c.cloud/v2/gh/ProjectPythiaTutorials/cmip6-cookbook.git/main)
