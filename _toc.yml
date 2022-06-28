@@ -3,4 +3,4 @@ root: landing-page
 parts:
   - caption: Example workflows
     chapters:
-      - file: ecs-cmip6
+      - file: notebooks/ecs-cmip6
