@@ -1,5 +1,4 @@
 <img src="notebooks/images/cmip6-logo.webp" width=500 alt="CMIP6 logo"></img>
-<img src="notebooks/images/cmip6-cookbook-thumbnail.png" width=250 alt="CMIP6 image"></img>
 
 # CMIP6 Cookbook
 
