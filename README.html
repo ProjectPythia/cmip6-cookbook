@@ -319,6 +319,11 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#foundations">
+     Foundations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-workflows">
      Example workflows
     </a>
@@ -353,18 +358,35 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
               
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cmip6-cookbook">
+  <p><a class="reference internal" href="_images/cmip6-logo.webp"><img alt="CMIP6 logo" src="_images/cmip6-logo.webp" style="width: 500px;" /></a></img>
+<a class="reference internal" href="_images/cmip6-cookbook-thumbnail.png"><img alt="CMIP6 image" src="_images/cmip6-cookbook-thumbnail.png" style="width: 250px;" /></a></img></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="cmip6-cookbook">
 <h1>CMIP6 Cookbook<a class="headerlink" href="#cmip6-cookbook" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
 <p><a class="reference external" href="https://github.com/ProjectPythiaTutorials/cmip6-cookbook/actions/workflows/nightly-build.yaml"><img alt="nightly-build" src="https://github.com/ProjectPythiaTutorials/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg" /></a>
 <a class="reference external" href="https://binder-staging.2i2c.cloud/v2/gh/ProjectPythiaTutorials/cmip6-cookbook.git/main"><img alt="Binder" src="https://binder-staging.2i2c.cloud/badge_logo.svg" /></a></p>
 <p>This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 data using Pangeo tools.</p>
 <div class="section" id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<p>From the <a class="reference external" href="https://esgf-node.llnl.gov/projects/cmip6/">CMIP6 website</a>:</p>
+<blockquote>
+<div><p>The simulation data produced by models under previous phases of CMIP have been used in thousands of research papers … and the multi-model results provide some perspective on errors and uncertainty in model simulations. This information has proved invaluable in preparing high profile reports assessing our understanding of climate and climate change (e.g., the IPCC Assessment Reports).</p>
+</div></blockquote>
+<p>With such a large amount of model output produced, moving the data around is inefficient. In this collection of notebooks, you will learn how to access cloud-optimized CMIP6 datasets, in addition to a few examples of using that data to analyze some aspects of climate change.</p>
 </div>
 <div class="section" id="structure">
 <h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="foundations">
+<h3>Foundations<a class="headerlink" href="#foundations" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<p>This section includes three variations of downloading CMIP6 data from cloud storage.</p>
+</div>
 <div class="section" id="example-workflows">
 <h3>Example workflows<a class="headerlink" href="#example-workflows" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<p>There are currently three examples of using this data to</p>
+<ul class="simple">
+<li><p>Estimate equilibrium climate sensitivity (ECS)</p></li>
+<li><p>Plot global mean surface temperature under two different <a class="reference external" href="https://unece.org/fileadmin/DAM/energy/se/pdfs/CSE/PATHWAYS/2019/ws_Consult_14_15.May.2019/supp_doc/SSP2_Overview.pdf">Shared Socioeconomic Pathways</a></p></li>
+<li><p>Plot changes in precipitation intensity under the SSP585 scenario</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="running-the-notebooks">
@@ -390,10 +412,9 @@ Jupyter</a>.</p>
 <div class="section" id="running-on-your-own-machine">
 <h3>Running on Your Own Machine<a class="headerlink" href="#running-on-your-own-machine" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
 <p>If you are interested in running this material locally on your computer, you will need to follow this workflow:</p>
-<p>(Replace “cookbook-example” with the title of your cookbooks)</p>
 <ol>
-<li><p>Clone the <code class="docutils literal notranslate"><span class="pre">https://github.com/ProjectPythiaTutorials/cmip6-cookbook</span></code> repository:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> git clone https://github.com/ProjectPythiaTutorials/cmip6-cookbook.git
+<li><p>Clone the <code class="docutils literal notranslate"><span class="pre">https://github.com/ProjectPythiaCookbooks/cmip6-cookbook</span></code> repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> git clone https://github.com/ProjectPythiaCookbooks/cmip6-cookbook.git
 </pre></div>
 </div>
 </li>
