@@ -1,5 +1,4 @@
 <img src="notebooks/images/cmip6-logo.webp" width=500 alt="CMIP6 logo"></img>
-<img src="notebooks/images/cmip6-cookbook-thumbnail.png" width=250 alt="CMIP6 image"></img>
 
 # CMIP6 Cookbook
 
@@ -15,6 +14,16 @@ From the [CMIP6 website](https://esgf-node.llnl.gov/projects/cmip6/):
 > The simulation data produced by models under previous phases of CMIP have been used in thousands of research papers ... and the multi-model results provide some perspective on errors and uncertainty in model simulations. This information has proved invaluable in preparing high profile reports assessing our understanding of climate and climate change (e.g., the IPCC Assessment Reports).
 
 With such a large amount of model output produced, moving the data around is inefficient. In this collection of notebooks, you will learn how to access cloud-optimized CMIP6 datasets, in addition to a few examples of using that data to analyze some aspects of climate change.
+
+## Authors
+
+[Ryan Abernathey](https://github.com/https://github.com/rabernat), Henri Drake
+
+### Contributors
+
+<a href="https://github.com/ProjectPythiaCookbooks/cmip6-cookbook/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ProjectPythiaCookbooks/cmip6-cookbook" />
+</a>
 
 ## Structure
 
