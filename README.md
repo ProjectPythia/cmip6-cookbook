@@ -15,6 +15,16 @@ From the [CMIP6 website](https://esgf-node.llnl.gov/projects/cmip6/):
 
 With such a large amount of model output produced, moving the data around is inefficient. In this collection of notebooks, you will learn how to access cloud-optimized CMIP6 datasets, in addition to a few examples of using that data to analyze some aspects of climate change.
 
+## Authors
+
+[Ryan Abernathey](https://github.com/https://github.com/rabernat), Henri Drake
+
+### Contributors
+
+<a href="https://github.com/ProjectPythiaCookbooks/cmip6-cookbook/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ProjectPythiaCookbooks/cmip6-cookbook" />
+</a>
+
 ## Structure
 
 ### Foundations
