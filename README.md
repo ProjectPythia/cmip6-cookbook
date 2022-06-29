@@ -1,3 +1,6 @@
+<img src="notebooks/images/cmip6-logo.webp" width=500 alt="CMIP6 logo"></img>
+<img src="notebooks/images/cmip6-cookbook-thumbnail.png" width=250 alt="CMIP6 image"></img>
+
 # CMIP6 Cookbook
 
 [![nightly-build](https://github.com/ProjectPythiaTutorials/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythiaTutorials/cmip6-cookbook/actions/workflows/nightly-build.yaml)
@@ -11,9 +14,16 @@ This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 d
 
 ## Structure
 
+### Foundations
+
+This section includes three variations of downloading CMIP6 data from cloud storage.
+
 ### Example workflows
 
-
+There are currently three examples of using this data to 
+- Estimate equilibrium climate sensitivity (ECS)
+- Plot global mean surface temperature under two different [Shared Socioeconomic Pathways](https://unece.org/fileadmin/DAM/energy/se/pdfs/CSE/PATHWAYS/2019/ws_Consult_14_15.May.2019/supp_doc/SSP2_Overview.pdf)
+- Plot changes in precipitation intensity under the SSP585 scenario
 
 ## Running the Notebooks
 You can either run the notebook using [Binder](https://mybinder.org/) or on your local machine.
