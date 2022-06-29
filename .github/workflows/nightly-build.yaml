@@ -12,6 +12,7 @@ jobs:
       environment_name: cmip6-cookbook-dev
       environment_file: environment.yml
       path_to_notebooks: ./
+      use_cached_environment: false
 
   link-check:
     uses: ./.github/workflows/link-checker.yaml
@@ -19,3 +20,4 @@ jobs:
       environment_name: cmip6-cookbook-dev
       environment_file: environment.yml
       path_to_notebooks: ./
+      use_cached_environment: false
