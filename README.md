@@ -10,7 +10,11 @@ This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 d
 
 ## Motivation
 
+From the [CMIP6 website](https://esgf-node.llnl.gov/projects/cmip6/):
 
+> The simulation data produced by models under previous phases of CMIP have been used in thousands of research papers ... and the multi-model results provide some perspective on errors and uncertainty in model simulations. This information has proved invaluable in preparing high profile reports assessing our understanding of climate and climate change (e.g., the IPCC Assessment Reports).
+
+With such a large amount of model output produced, moving the data around is inefficient. In this collection of notebooks, you will learn how to access cloud-optimized CMIP6 datasets, in addition to a few examples of using that data to analyze some aspects of climate change.
 
 ## Structure
 
@@ -48,12 +52,10 @@ Jupyter](https://foundations.projectpythia.org/foundations/getting-started-jupyt
 ### Running on Your Own Machine
 If you are interested in running this material locally on your computer, you will need to follow this workflow:
 
-(Replace "cookbook-example" with the title of your cookbooks)   
-
-1. Clone the `https://github.com/ProjectPythiaTutorials/cmip6-cookbook` repository:
+1. Clone the `https://github.com/ProjectPythiaCookbooks/cmip6-cookbook` repository:
 
    ```bash
-    git clone https://github.com/ProjectPythiaTutorials/cmip6-cookbook.git
+    git clone https://github.com/ProjectPythiaCookbooks/cmip6-cookbook.git
     ```  
 1. Move into the `cmip6-cookbook` directory
     ```bash
