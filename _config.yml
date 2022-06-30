@@ -7,6 +7,13 @@ logo: notebooks/images/logos/pythia_logo-white-rtext.svg
 email: projectpythia@ucar.edu
 copyright: '2022'
 
+thumbnail: thumbnail.png
+tags:
+  domains:
+    - climate
+  packages:
+    - intake-esm
+
 # Don't execute the notebooks upon building the book
 execute:
   execute_notebooks: cache
