@@ -17,7 +17,7 @@ With such a large amount of model output produced, moving the data around is ine
 
 ## Authors
 
-[Ryan Abernathey](https://github.com/rabernat), Henri Drake
+[Ryan Abernathey](https://github.com/rabernat), Henri Drake, [Robert Ford](https://github.com/r-ford)
 
 ### Contributors
 
