@@ -7,6 +7,7 @@ logo: notebooks/images/logos/pythia_logo-white-rtext.svg
 email: projectpythia@ucar.edu
 copyright: '2022'
 
+description: Examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
 thumbnail: thumbnail.png
 tags:
   domains:
