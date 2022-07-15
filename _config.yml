@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: CMIP6 Cookbook
-author: the <a href="https://projectpythia.org/">Project Pythia</a> Community
+author: Ryan Abernathey, Henri Drake, Robert Ford
 logo: notebooks/images/logos/pythia_logo-white-rtext.svg
 email: projectpythia@ucar.edu
 copyright: '2022'
