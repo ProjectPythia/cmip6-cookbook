@@ -13,7 +13,7 @@ tags:
   domains:
     - climate
   packages:
-    - intake-esm
+    - intake-esm, xesmf
 
 # Don't execute the notebooks upon building the book
 execute:

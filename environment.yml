@@ -1,6 +1,7 @@
 name: cmip6-cookbook-dev
 channels:
   - conda-forge
+  - default
 dependencies:
   - python=3.8
   - jupyter-book
@@ -25,4 +26,4 @@ dependencies:
   - seaborn
   - pip
   - pip:
-      - sphinx-pythia-theme
+    - sphinx-pythia-theme
