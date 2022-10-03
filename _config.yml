@@ -15,12 +15,9 @@ tags:
   packages:
     - intake-esm
 
-# Don't execute the notebooks upon building the book
 execute:
-  execute_notebooks: cache
-  timeout: 600
-  allow_errors: True
-
+  execute_notebooks: 'off' # we are executing via binderbot instead
+  
 # Add a few extensions to help with parsing content
 parse:
   myst_enable_extensions: # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html

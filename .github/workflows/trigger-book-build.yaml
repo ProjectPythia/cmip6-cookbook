@@ -4,16 +4,20 @@ on:
 
 jobs:
   build:
-    uses: ProjectPythiaCookbooks/cookbook-actions/.github/workflows/build-book.yaml@main
+    uses: brian-rose/cookbook-actions/.github/workflows/build-book.yaml@binderbot  # temporary for testing!
     with:
-      environment_name: cmip6-cookbook-dev
-      environment_file: environment.yml
+      environment_name: book-build
+      environment_file: book-build-environment.yml
       path_to_notebooks: ./
       use_cached_environment: 'true'  # This is default, not strickly needed. Set to 'false' to always build a new environment
+      binder_url: http://binder.mypythia.org
+      binder_build_env_repo: ProjectPythiaCookbooks/cmip6-cookbook
+      binder_notebooks_to_build: 'notebooks/foundations/*.ipynb notebooks/example-workflows/*.ipynb'
+
   link-check:
     uses: ProjectPythiaCookbooks/cookbook-actions/.github/workflows/link-checker.yaml@main
     with:
-      environment_name: cmip6-cookbook-dev
-      environment_file: environment.yml
+      environment_name: book-build
+      environment_file: book-build-environment.yml
       path_to_notebooks: ./
       use_cached_environment: 'true'
