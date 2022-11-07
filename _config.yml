@@ -15,12 +15,9 @@ tags:
   packages:
     - intake-esm
 
-# Don't execute the notebooks upon building the book
 execute:
-  execute_notebooks: cache
-  timeout: 600
-  allow_errors: True
-
+  execute_notebooks: binder
+  
 # Add a few extensions to help with parsing content
 parse:
   myst_enable_extensions: # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
@@ -55,7 +52,7 @@ sphinx:
           icon: fab fa-youtube-square
           type: fontawesome
       launch_buttons:
-        binderhub_url: https://mybinder.org
+        binderhub_url: http://binder.mypythia.org
         notebook_interface: jupyterlab
       extra_navbar: |
         Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>

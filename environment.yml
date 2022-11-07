@@ -2,8 +2,8 @@ name: cmip6-cookbook-dev
 channels:
   - conda-forge
 dependencies:
+  - jupyterlab
   - python<3.10
-  - jupyter-book
   - numpy
   - matplotlib
   - pandas
@@ -22,6 +22,4 @@ dependencies:
   - nc-time-axis
   - gcsfs
   - seaborn
-  - pip
-  - pip:
-      - sphinx-pythia-theme
+  
