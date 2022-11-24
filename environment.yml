@@ -9,7 +9,7 @@ dependencies:
   - numpy
   - matplotlib
   - pandas
-  - xarray
+  - xarray<2022.11.0
   - xesmf
   - xhistogram
   - numba
