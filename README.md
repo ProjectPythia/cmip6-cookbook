@@ -4,7 +4,7 @@
 
 **Now executing via binderbot!**
 
-[![nightly-build](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythiaTutorials/cmip6-cookbook/actions/workflows/nightly-build.yaml)
+[![nightly-build](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml)
 [![Binder](http://binder.mypythia.org/badge_logo.svg)](http://binder.mypythia.org/v2/gh/ProjectPythiaTutorials/cmip6-cookbook.git/main)
 
 This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
