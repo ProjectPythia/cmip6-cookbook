@@ -16,7 +16,7 @@ tags:
     - intake-esm
 
 execute:
-  execute_notebooks: "off"
+  execute_notebooks: binder
   
 # Add a few extensions to help with parsing content
 parse:
@@ -53,7 +53,6 @@ sphinx:
           type: fontawesome
       launch_buttons:
         binderhub_url: http://binder.mypythia.org
-        jupyterhub_url: https://nimbus1.llnl.gov/jupyterhub
         notebook_interface: jupyterlab
       extra_navbar: |
         Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
