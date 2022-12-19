@@ -7,3 +7,4 @@ jobs:
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
     with:
       artifact_name: book-zip-${{ github.event.number }}
+      use_cached_environment: false
