@@ -16,7 +16,7 @@ tags:
     - intake-esm
 
 execute:
-  execute_notebooks: binder
+  execute_notebooks: force
   
 # Add a few extensions to help with parsing content
 parse:
