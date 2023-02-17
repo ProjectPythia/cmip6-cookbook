@@ -23,6 +23,6 @@ dependencies:
   - nc-time-axis
   - gcsfs
   - seaborn
-  - pyesgf
+  - esgf-pyclient
   - hvplot
   - holoviews
