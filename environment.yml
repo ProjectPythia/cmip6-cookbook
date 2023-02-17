@@ -10,7 +10,7 @@ dependencies:
   - xarray
   - xesmf
   - xhistogram
-  - numba
+  - numba=0.56.4
   - cartopy
   - dask
   - dask-gateway
