@@ -4,7 +4,7 @@ on:
 
 jobs:
   build:
-    uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
+    uses: mgrover1/cookbook-actions/.github/workflows/build-book.yaml@fix-rebuild-env
     with:
       environment_name: cmip6-cookbook-dev
       artifact_name: book-zip-${{ github.event.number }}
