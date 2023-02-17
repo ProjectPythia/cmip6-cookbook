@@ -1,13 +1,14 @@
 name: cmip6-cookbook-dev
 channels:
   - conda-forge
+  - pyviz
 dependencies:
   - jupyterlab
   - python<3.10
   - numpy
   - matplotlib
   - pandas
-  - xarray<2022.10.0
+  - xarray
   - xesmf
   - xhistogram
   - numba
@@ -22,3 +23,6 @@ dependencies:
   - nc-time-axis
   - gcsfs
   - seaborn
+  - pyesgf
+  - hvplot
+  - holoviews
