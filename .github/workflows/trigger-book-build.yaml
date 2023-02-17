@@ -6,5 +6,6 @@ jobs:
   build:
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
     with:
+      environment_name: cmip6-cookbook-dev
       artifact_name: book-zip-${{ github.event.number }}
       use_cached_environment: 'false'
