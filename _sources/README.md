@@ -2,8 +2,8 @@
 
 # CMIP6 Cookbook
 
-[![nightly-build](https://github.com/ProjectPythiaTutorials/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythiaTutorials/cmip6-cookbook/actions/workflows/nightly-build.yaml)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ProjectPythiaTutorials/cmip6-cookbook.git/main)
+[![nightly-build](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml)
+[![Binder](http://binder.mypythia.org/badge_logo.svg)](http://binder.mypythia.org/v2/gh/ProjectPythia/cmip6-cookbook.git/main)
 
 This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
 
@@ -21,8 +21,8 @@ With such a large amount of model output produced, moving the data around is ine
 
 ### Contributors
 
-<a href="https://github.com/ProjectPythiaCookbooks/cmip6-cookbook/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ProjectPythiaCookbooks/cmip6-cookbook" />
+<a href="https://github.com/ProjectPythia/cmip6-cookbook/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ProjectPythia/cmip6-cookbook" />
 </a>
 
 ## Structure
@@ -61,10 +61,10 @@ Jupyter](https://foundations.projectpythia.org/foundations/getting-started-jupyt
 ### Running on Your Own Machine
 If you are interested in running this material locally on your computer, you will need to follow this workflow:
 
-1. Clone the `https://github.com/ProjectPythiaCookbooks/cmip6-cookbook` repository:
+1. Clone the `https://github.com/ProjectPythia/cmip6-cookbook` repository:
 
    ```bash
-    git clone https://github.com/ProjectPythiaCookbooks/cmip6-cookbook.git
+    git clone https://github.com/ProjectPythia/cmip6-cookbook.git
     ```  
 1. Move into the `cmip6-cookbook` directory
     ```bash
