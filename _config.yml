@@ -13,7 +13,7 @@ tags:
   domains:
     - climate
   packages:
-    - intake-esm
+    - intake-esm, xesmf
 
 execute:
   execute_notebooks: 'binder'
