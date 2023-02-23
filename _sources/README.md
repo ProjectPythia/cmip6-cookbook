@@ -29,14 +29,15 @@ With such a large amount of model output produced, moving the data around is ine
 
 ### Foundations
 
-This section includes three variations of downloading CMIP6 data from cloud storage.
+This section includes three variations of accessing CMIP6 data from cloud storage.
 
 ### Example workflows
 
-There are currently three examples of using this data to 
+There are currently four examples of using this data to 
 - Estimate equilibrium climate sensitivity (ECS)
 - Plot global mean surface temperature under two different [Shared Socioeconomic Pathways](https://unece.org/fileadmin/DAM/energy/se/pdfs/CSE/PATHWAYS/2019/ws_Consult_14_15.May.2019/supp_doc/SSP2_Overview.pdf)
 - Plot changes in precipitation intensity under the SSP585 scenario
+- Calculate changes in ocean heat uptake after regridding with xESMF
 
 ## Running the Notebooks
 You can either run the notebook using [Binder](https://mybinder.org/) or on your local machine.

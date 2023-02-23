@@ -222,6 +222,11 @@ const thebe_selector_output = ".output, .cell_output"
    Precipitation Frequency Analysis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/example-workflows/xesmf-ohu.html">
+   Regridding with xESMF and calculating a multi-model mean
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -398,15 +403,16 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
 <div class="section" id="foundations">
 <h3>Foundations<a class="headerlink" href="#foundations" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>This section includes three variations of downloading CMIP6 data from cloud storage.</p>
+<p>This section includes three variations of accessing CMIP6 data from cloud storage.</p>
 </div>
 <div class="section" id="example-workflows">
 <h3>Example workflows<a class="headerlink" href="#example-workflows" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
-<p>There are currently three examples of using this data to</p>
+<p>There are currently four examples of using this data to</p>
 <ul class="simple">
 <li><p>Estimate equilibrium climate sensitivity (ECS)</p></li>
 <li><p>Plot global mean surface temperature under two different <a class="reference external" href="https://unece.org/fileadmin/DAM/energy/se/pdfs/CSE/PATHWAYS/2019/ws_Consult_14_15.May.2019/supp_doc/SSP2_Overview.pdf">Shared Socioeconomic Pathways</a></p></li>
 <li><p>Plot changes in precipitation intensity under the SSP585 scenario</p></li>
+<li><p>Calculate changes in ocean heat uptake after regridding with xESMF</p></li>
 </ul>
 </div>
 </div>
@@ -541,7 +547,7 @@ jupyter<span class="w"> </span>lab
         
           By Ryan Abernathey, Henri Drake, Robert Ford.
         
-          Last updated on 20 February 2023.
+          Last updated on 23 February 2023.
         </p>
       </div>
     </div>
