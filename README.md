@@ -29,7 +29,7 @@ With such a large amount of model output produced, moving the data around is ine
 
 ### Foundations
 
-This section includes three variations of downloading CMIP6 data from cloud storage.
+This section includes three variations of accessing CMIP6 data from cloud storage.
 
 ### Example workflows
 
