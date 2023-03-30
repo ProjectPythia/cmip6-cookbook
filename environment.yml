@@ -22,6 +22,7 @@ dependencies:
   - cftime
   - nc-time-axis
   - gcsfs
+  - act-atmos
   - seaborn
   - esgf-pyclient
   - hvplot
