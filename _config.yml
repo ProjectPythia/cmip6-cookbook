@@ -55,6 +55,7 @@ sphinx:
           type: fontawesome
       launch_buttons:
         binderhub_url: http://binder.mypythia.org
+        jupyterhub_rl: https://nimbus6.llnl.gov
         notebook_interface: jupyterlab
       extra_navbar: |
         Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
