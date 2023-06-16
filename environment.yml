@@ -3,7 +3,6 @@ channels:
   - conda-forge
   - pyviz
 dependencies:
-  - jupyterlab
   - python
   - numpy<1.24.0
   - matplotlib
@@ -27,3 +26,9 @@ dependencies:
   - esgf-pyclient
   - hvplot
   - holoviews
+  - jupyter-book
+  - jupyterlab
+  - jupyter_server<2
+  - pip
+  - pip:
+      - sphinx-pythia-theme
