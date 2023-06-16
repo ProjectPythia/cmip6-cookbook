@@ -18,7 +18,7 @@ tags:
 
 execute:
   # To execute notebooks via a Binder instead, replace 'cache' with 'binder'
-  execute_notebooks: binder
+  execute_notebooks: cache
   allow_errors: False # cells with expected failures must set the `raises-exception` cell tag
 
   
