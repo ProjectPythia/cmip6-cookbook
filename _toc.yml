@@ -1,14 +1,15 @@
 format: jb-book
 root: README
 parts:
-  - caption: Foundations
-    chapters:
-      - file: notebooks/foundations/intake-esm
-      - file: notebooks/foundations/google-cloud-basic
-      - file: notebooks/foundations/esgf-opendap
+  # - caption: Foundations
+  #   chapters:
+  #     - file: notebooks/foundations/intake-esm
+  #     - file: notebooks/foundations/google-cloud-basic
+  #     - file: notebooks/foundations/esgf-opendap
   - caption: Example workflows
     chapters:
-      - file: notebooks/example-workflows/ecs-cmip6
-      - file: notebooks/example-workflows/gmst
-      - file: notebooks/example-workflows/precip-freq
-      - file: notebooks/example-workflows/xesmf-ohu
+      # - file: notebooks/example-workflows/ecs-cmip6
+      # - file: notebooks/example-workflows/gmst
+      # - file: notebooks/example-workflows/precip-freq
+      # - file: notebooks/example-workflows/xesmf-ohu
+      - file: notebooks/example-esgf2-arm-comparison
