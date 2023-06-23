@@ -6,4 +6,4 @@ parts:
       - file: notebooks/how-to-cite
   - caption: Example workflows
     chapters:
-      - file: notebooks/example-workflows/example-esgf2-arm-comparison
+      - file: notebooks/example-workflows/esgf2-arm-comparison
