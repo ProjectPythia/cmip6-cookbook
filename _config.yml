@@ -4,17 +4,7 @@
 title: CMIP6 Cookbook
 author: Ryan Abernathey, Henri Drake, Robert Ford
 logo: notebooks/images/logos/pythia_logo-white-rtext.svg
-email: projectpythia@ucar.edu
 copyright: '2023'
-
-description: Examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
-thumbnail: thumbnail.png
-tags:
-  domains:
-    - climate
-  packages:
-    - intake-esm
-    - xesmf
 
 execute:
   # To execute notebooks via a Binder instead, replace 'cache' with 'binder'
