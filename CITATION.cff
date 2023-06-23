@@ -9,6 +9,9 @@ authors:
     affiliation: Columbia University # optional
   - family-names: Drake
     given-names: Henri
+    orcid: https://orcid.org/0000-0003-0135-0814
+    website: https://github.com/hdrake
+    affiliation: University of California, Irvine
   - family-names: Ford
     given-names: Robert R.
     orcid: https://orcid.org/0000-0001-5483-4965
