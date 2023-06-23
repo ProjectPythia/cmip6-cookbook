@@ -15,6 +15,6 @@ authors:
     website: https://github.com/r-ford
     affiliation: University at Albany (State University of New York)
   - name: "CMIP6 Cookbook contributors" # use the 'name' field to acknowledge organizations
-    website: "https://github.com/ProjectPythia/cookbook-template/graphs/contributors"
+    website: "https://github.com/ProjectPythia/cmip6-cookbook/graphs/contributors"
 title: "CMIP6 Cookbook"
 abstract: "Examples of analysis of Google Cloud CMIP6 data using Pangeo tools."
