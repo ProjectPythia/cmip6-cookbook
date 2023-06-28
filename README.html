@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Load CMIP6 Data with Intake-ESM" href="notebooks/foundations/intake-esm.html" />
+    <link rel="next" title="How to Cite This Cookbook" href="notebooks/how-to-cite.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -179,23 +179,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Foundations
+  Preamble
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/foundations/intake-esm.html">
-   Load CMIP6 Data with Intake-ESM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/foundations/google-cloud-basic.html">
-   Google Cloud CMIP6 Public Data: Basic Python Example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/foundations/esgf-opendap.html">
-   Search and Load CMIP6 Data via ESGF/OPeNDAP
+  <a class="reference internal" href="notebooks/how-to-cite.html">
+   How to Cite This Cookbook
   </a>
  </li>
 </ul>
@@ -206,23 +196,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/example-workflows/ecs-cmip6.html">
-   Estimating Equilibrium Climate Sensitivity
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/example-workflows/gmst.html">
-   Global Mean Surface Temperature
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/example-workflows/precip-freq.html">
-   Precipitation Frequency Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/example-workflows/xesmf-ohu.html">
-   Regridding with xESMF and calculating a multi-model mean
+  <a class="reference internal" href="notebooks/example-workflows/esgf2-arm-comparison.html">
+   Compare Data from ESGF and ARM
   </a>
  </li>
 </ul>
@@ -377,7 +352,8 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <div class="tex2jax_ignore mathjax_ignore section" id="cmip6-cookbook">
 <h1>CMIP6 Cookbook<a class="headerlink" href="#cmip6-cookbook" title="Permalink to this headline"><i class="fas fa-link"></i></a></h1>
 <p><a class="reference external" href="https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml"><img alt="nightly-build" src="https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg" /></a>
-<a class="reference external" href="http://binder.mypythia.org/v2/gh/ProjectPythia/cmip6-cookbook.git/main"><img alt="Binder" src="http://binder.mypythia.org/badge_logo.svg" /></a></p>
+<a class="reference external" href="https://binder.projectpythia.org/v2/gh/ProjectPythia/cmip6-cookbook.git/main"><img alt="Binder" src="https://binder.projectpythia.org/badge_logo.svg" /></a>
+<a class="reference external" href="https://zenodo.org/badge/latestdoi/507993770"><img alt="DOI" src="https://zenodo.org/badge/507993770.svg" /></a></p>
 <p>This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 data using Pangeo tools.</p>
 <div class="section" id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
@@ -389,7 +365,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 <div class="section" id="authors">
 <h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p><a class="reference external" href="https://github.com/rabernat">Ryan Abernathey</a>, Henri Drake, <a class="reference external" href="https://github.com/r-ford">Robert Ford</a></p>
+<p><a class="reference external" href="https://github.com/rabernat">Ryan Abernathey</a>, <a class="reference external" href="https://github.com/hdrake">Henri Drake</a>, <a class="reference external" href="https://github.com/r-ford">Robert Ford</a></p>
 <div class="section" id="contributors">
 <h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
 <a href="https://github.com/ProjectPythia/cmip6-cookbook/graphs/contributors">
@@ -416,11 +392,11 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 <div class="section" id="running-the-notebooks">
 <h2>Running the Notebooks<a class="headerlink" href="#running-the-notebooks" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
-<p>You can either run the notebook using <a class="reference external" href="https://mybinder.org/">Binder</a> or on your local machine.</p>
+<p>You can either run the notebook using <a class="reference external" href="https://binder.projectpythia.org">Binder</a> or on your local machine.</p>
 <div class="section" id="running-on-binder">
 <h3>Running on Binder<a class="headerlink" href="#running-on-binder" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
 <p>The simplest way to interact with a Jupyter Notebook is through
-<a class="reference external" href="https://mybinder.org/">Binder</a>, which enables the execution of a
+<a class="reference external" href="https://binder.projectpythia.org">Binder</a>, which enables the execution of a
 <a class="reference external" href="https://jupyterbook.org">Jupyter Book</a> in the cloud. The details of how this works are not
 important for now. All you need to know is how to launch a Pythia
 Cookbooks chapter via Binder. Simply navigate your mouse to
@@ -493,10 +469,10 @@ jupyter<span class="w"> </span>lab
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="notebooks/foundations/intake-esm.html" title="next page">
+    <a class='right-next' id="next-link" href="notebooks/how-to-cite.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Load CMIP6 Data with Intake-ESM</p>
+        <p class="prev-next-title">How to Cite This Cookbook</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -541,11 +517,11 @@ jupyter<span class="w"> </span>lab
     <div class="container-xl">
       <div class="d-flex justify-content-center">
         <p class="py-1 m-0">
-            &copy;&nbsp;2022.
+            &copy;&nbsp;2023.
         
           By Ryan Abernathey, Henri Drake, Robert Ford.
         
-          Last updated on 31 March 2023.
+          Last updated on 28 June 2023.
         </p>
       </div>
     </div>

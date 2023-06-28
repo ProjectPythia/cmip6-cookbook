@@ -3,7 +3,8 @@
 # CMIP6 Cookbook
 
 [![nightly-build](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml)
-[![Binder](http://binder.mypythia.org/badge_logo.svg)](http://binder.mypythia.org/v2/gh/ProjectPythia/cmip6-cookbook.git/main)
+[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cmip6-cookbook.git/main)
+[![DOI](https://zenodo.org/badge/507993770.svg)](https://zenodo.org/badge/latestdoi/507993770)
 
 This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
 
@@ -17,7 +18,7 @@ With such a large amount of model output produced, moving the data around is ine
 
 ## Authors
 
-[Ryan Abernathey](https://github.com/rabernat), Henri Drake, [Robert Ford](https://github.com/r-ford)
+[Ryan Abernathey](https://github.com/rabernat), [Henri Drake](https://github.com/hdrake), [Robert Ford](https://github.com/r-ford)
 
 ### Contributors
 
@@ -40,12 +41,12 @@ There are currently four examples of using this data to
 - Calculate changes in ocean heat uptake after regridding with xESMF
 
 ## Running the Notebooks
-You can either run the notebook using [Binder](https://mybinder.org/) or on your local machine.
+You can either run the notebook using [Binder](https://binder.projectpythia.org) or on your local machine.
 
 ### Running on Binder
 
 The simplest way to interact with a Jupyter Notebook is through
-[Binder](https://mybinder.org/), which enables the execution of a
+[Binder](https://binder.projectpythia.org), which enables the execution of a
 [Jupyter Book](https://jupyterbook.org) in the cloud. The details of how this works are not
 important for now. All you need to know is how to launch a Pythia
 Cookbooks chapter via Binder. Simply navigate your mouse to
