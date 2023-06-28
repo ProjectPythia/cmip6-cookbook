@@ -1,17 +1,11 @@
 name: trigger-book-build
 on:
   pull_request:
-env:
-  ARM_USERNAME: ${{ secrets.ARM_USERNAME }}
-  ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
+
+# instead of calling build-book directly, we will create and upload an artifact containing the source (minus .github directory)
 
 jobs:
-  build:
-    uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
-    secrets:
-      ARM_USERNAME: ${{ secrets.ARM_USERNAME }}
-      ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
+  get-code:
+    uses: ProjectPythia/cookbook-actions/.github/workflows/get-code.yaml@main
     with:
-      environment_name: cmip6-cookbook-dev
-      artifact_name: book-zip-${{ github.event.number }}
-      use_cached_environment: 'false'
+      code_artifact_name: code-zip-${{ github.event.number }}
