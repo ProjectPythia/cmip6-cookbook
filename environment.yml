@@ -29,6 +29,8 @@ dependencies:
   - jupyter-book
   - jupyterlab
   - jupyter_server<2
+  - globus-compute-sdk
   - pip
   - pip:
       - sphinx-pythia-theme
+      - git+https://github.com/nocollier/intake-esgf
