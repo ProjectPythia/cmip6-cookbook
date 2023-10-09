@@ -20,6 +20,7 @@ dependencies:
   - fsspec
   - cftime
   - nc-time-axis
+  - globus-compute-endpoint
   - gcsfs
   - act-atmos
   - seaborn
