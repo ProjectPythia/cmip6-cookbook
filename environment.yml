@@ -29,7 +29,7 @@ dependencies:
   - holoviews
   - jupyter-book
   - jupyterlab
-  - jupyter_server<2
+  - jupyter_server
   - globus-compute-sdk
   - pip
   - pip:
