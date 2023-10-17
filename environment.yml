@@ -4,7 +4,7 @@ channels:
   - pyviz
 dependencies:
   - python<3.12
-  - numpy
+  - numpy<1.24.0
   - matplotlib
   - pandas
   - xarray
