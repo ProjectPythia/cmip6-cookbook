@@ -15,4 +15,5 @@ parts:
       - file: notebooks/example-workflows/gmst
       - file: notebooks/example-workflows/precip-freq
       - file: notebooks/example-workflows/xesmf-ohu
+      - file: notebooks/example-workflows/enso-esgf
       - file: notebooks/example-workflows/esgf2-arm-comparison
