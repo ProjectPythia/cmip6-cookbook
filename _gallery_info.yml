@@ -1,0 +1,7 @@
+thumbnail: thumbnail.png
+tags:
+  domains:
+    - climate
+  packages:
+    - intake-esm
+    - xesmf

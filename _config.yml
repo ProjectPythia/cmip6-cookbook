@@ -4,21 +4,12 @@
 title: CMIP6 Cookbook
 author: Ryan Abernathey, Henri Drake, Robert Ford
 logo: notebooks/images/logos/pythia_logo-white-rtext.svg
-email: projectpythia@ucar.edu
 copyright: '2023'
-
-description: Examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
-thumbnail: thumbnail.png
-tags:
-  domains:
-    - climate
-  packages:
-    - intake-esm
-    - xesmf
 
 execute:
   # To execute notebooks via a Binder instead, replace 'cache' with 'binder'
-  execute_notebooks: force
+  execute_notebooks: "binder"
+  timeout: 1200
   allow_errors: False # cells with expected failures must set the `raises-exception` cell tag
 
   
@@ -59,6 +50,7 @@ sphinx:
           type: fontawesome
       launch_buttons:
         binderhub_url: https://binder.projectpythia.org
+        jupyterhub_url: https://nimbus6.llnl.gov
         notebook_interface: jupyterlab
       extra_navbar: |
         Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
