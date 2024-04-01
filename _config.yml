@@ -7,7 +7,7 @@ logo: notebooks/images/logos/pythia_logo-white-rtext.svg
 copyright: '2024'
 
 execute:
-  execute_notebooks: "off"
+  execute_notebooks: "cache"
   timeout: 1200
   allow_errors: False # cells with expected failures must set the `raises-exception` cell tag
 
@@ -41,6 +41,8 @@ sphinx:
       use_repository_button: true
       use_edit_page_button: true
       use_fullscreen_button: true
+      analytics:
+        google_analytics_id: G-T52X8HNYE8
       github_url: https://github.com/ProjectPythia
       twitter_url: https://twitter.com/project_pythia
       icon_links:
