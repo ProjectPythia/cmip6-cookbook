@@ -4,7 +4,7 @@
 title: CMIP6 Cookbook
 author: Ryan Abernathey, Henri Drake, Robert Ford
 logo: notebooks/images/logos/pythia_logo-white-rtext.svg
-copyright: '2023'
+copyright: '2024'
 
 execute:
   # To execute notebooks via a Binder instead, replace 'cache' with 'binder'
@@ -41,6 +41,7 @@ sphinx:
       use_issues_button: true
       use_repository_button: true
       use_edit_page_button: true
+      use_fullscreen_button: true
       github_url: https://github.com/ProjectPythia
       twitter_url: https://twitter.com/project_pythia
       icon_links:
@@ -52,9 +53,12 @@ sphinx:
         binderhub_url: https://binder.projectpythia.org
         jupyterhub_url: https://nimbus6.llnl.gov
         notebook_interface: jupyterlab
-      extra_navbar: |
-        Theme by <a href="https://projectpythia.org">Project Pythia</a>.<br><br>
-        All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 (CC BY 4.0)</a>.<br><br>
+      logo:
+        link: https://projectpythia.org
+      navbar_start:
+        - navbar-logo
+      navbar_end:
+        - navbar-icon-links
       logo_link: https://projectpythia.org
       navbar_links:
         - name: Home
@@ -68,6 +72,9 @@ sphinx:
         - name: Community
           url: https://projectpythia.org/index.html#join-us
       footer_logos:
-        NCAR: notebooks/images/logos/NCAR-contemp-logo-blue.svg
+        NCAR: notebooks/images/logos/NSF-NCAR_Lockup-UCAR-Dark_102523.svg
         Unidata: notebooks/images/logos/Unidata_logo_horizontal_1200x300.svg
         UAlbany: notebooks/images/logos/UAlbany-A2-logo-purple-gold.svg
+      footer_start:
+        - footer-logos
+        - footer-info
