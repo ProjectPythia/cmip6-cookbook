@@ -1,0 +1,1139 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Regridding with xESMF and calculating a multi-model mean &#8212; CMIP6 Cookbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=e502140d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6c0083f7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/example-workflows/xesmf-ohu';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compare Data from ESGF and ARM" href="esgf2-arm-comparison.html" />
+    <link rel="prev" title="Precipitation Frequency Analysis" href="precip-freq.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="1 April 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="CMIP6 Cookbook - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="CMIP6 Cookbook - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    CMIP6 Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../foundations/intake-esm.html">Load CMIP6 Data with Intake-ESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/google-cloud-basic.html">Google Cloud CMIP6 Public Data: Basic Python Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/esgf-opendap.html">Search and Load CMIP6 Data via ESGF/OPeNDAP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example workflows</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ecs-cmip6.html">Estimating Equilibrium Climate Sensitivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enso-esgf.html">Calculating ENSO Using Intake-ESGF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmst.html">Global Mean Surface Temperature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precip-freq.html">Precipitation Frequency Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regridding with xESMF and calculating a multi-model mean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esgf2-arm-comparison.html">Compare Data from ESGF and ARM</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+        </div>
+
+        
+        <main id="main-content" class="bd-main" role="main">
+          
+
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
+                
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <p><a class="reference internal" href="../../_images/cmip6-cookbook-thumbnail.png"><img alt="CMIP6 image" src="../../_images/cmip6-cookbook-thumbnail.png" style="width: 250px;" /></a></img></p>
+<section class="tex2jax_ignore mathjax_ignore" id="regridding-with-xesmf-and-calculating-a-multi-model-mean">
+<h1>Regridding with xESMF and calculating a multi-model mean<a class="headerlink" href="#regridding-with-xesmf-and-calculating-a-multi-model-mean" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The main goal of this workflow is to calculate the mean change in ocean heat uptake (OHU) associated with the transient climate response (TCR) for CMIP6. TCR is defined as the change in global mean surface temperature at the time of CO<span class="math notranslate nohighlight">\(_2\)</span> doubling in a climate model run with a 1% increase in CO<span class="math notranslate nohighlight">\(_2\)</span> per year. The amount and pattern of heat uptake into the oceans are important in determining the strength of radiative feedbacks and thus climate sensitivity. See <a class="reference external" href="https://doi.org/10.1029/2019AV000130">Xie (2020)</a> for an overview.</p>
+<p>In order to use as many models as possible, we will need to load the model output in its native grid, then regrid to a common grid (here 1°x1° lat-lon) using <a class="reference external" href="https://xesmf.readthedocs.io/en/latest/">xESMF</a>. From there, we can take the average across models and either plot the result or save it as a netCDF file for later use.</p>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/xarray/xarray-intro.html">Intro to Xarray</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/xarray/computation-masking.html">Computations and Masks with Xarray</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://projectpythia.org/cmip6-cookbook/notebooks/foundations/intake-esm.html">Load CMIP6 Data with Intake-ESM</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
+<td><p>Helpful</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/data-formats/netcdf-cf.html">Understanding of NetCDF</a></p></td>
+<td><p>Helpful</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Familiarity with CMIP6</p></td>
+<td><p>Helpful</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 30 minutes</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">intake</span>
+<span class="kn">import</span> <span class="nn">xesmf</span> <span class="k">as</span> <span class="nn">xe</span>
+<span class="kn">from</span> <span class="nn">cartopy</span> <span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span>
+<span class="kn">from</span> <span class="nn">cartopy.mpl.ticker</span> <span class="kn">import</span> <span class="n">LongitudeFormatter</span><span class="p">,</span> <span class="n">LatitudeFormatter</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="access-the-data">
+<h2>Access the data<a class="headerlink" href="#access-the-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>First, we will open and search the Pangeo CMIP6 catalog for monthly <code class="docutils literal notranslate"><span class="pre">hfds</span></code> (downward heat flux at the sea surface) for the control (<code class="docutils literal notranslate"><span class="pre">piControl</span></code>) and 1%/year CO<span class="math notranslate nohighlight">\(_2\)</span> (<code class="docutils literal notranslate"><span class="pre">1pctCO2</span></code>) runs for all available models on their native grids. The argument <code class="docutils literal notranslate"><span class="pre">require_all_on='source_id'</span></code> ensures that each model used has both experiments required for this analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_url</span> <span class="o">=</span> <span class="s2">&quot;https://storage.googleapis.com/cmip6/pangeo-cmip6.json&quot;</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">intake</span><span class="o">.</span><span class="n">open_esm_datastore</span><span class="p">(</span><span class="n">cat_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">experiment_id</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1pctCO2&#39;</span><span class="p">,</span> <span class="s1">&#39;piControl&#39;</span><span class="p">],</span> <span class="n">table_id</span><span class="o">=</span><span class="s1">&#39;Omon&#39;</span><span class="p">,</span> <span class="n">variable_id</span><span class="o">=</span><span class="s1">&#39;hfds&#39;</span><span class="p">,</span> 
+             <span class="n">grid_label</span><span class="o">=</span><span class="s1">&#39;gn&#39;</span><span class="p">,</span> <span class="n">member_id</span><span class="o">=</span><span class="s1">&#39;r1i1p1f1&#39;</span><span class="p">,</span> <span class="n">require_all_on</span><span class="o">=</span><span class="s1">&#39;source_id&#39;</span><span class="p">)</span>
+
+<span class="n">cat</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="o">**</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cat</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Conveniently, NCAR contributed some data to CMIP6 that has already been regridded to a 1x1 lat-lon grid, which is the resolution I am interested in for the ensemble mean. We will use the coordinates from this Dataset when we create the xESMF regridder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rg_query</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">source_id</span><span class="o">=</span><span class="s1">&#39;CESM2&#39;</span><span class="p">,</span> <span class="n">experiment_id</span><span class="o">=</span><span class="s1">&#39;piControl&#39;</span><span class="p">,</span> <span class="n">table_id</span><span class="o">=</span><span class="s1">&#39;Omon&#39;</span><span class="p">,</span> <span class="n">variable_id</span><span class="o">=</span><span class="s1">&#39;hfds&#39;</span><span class="p">,</span> 
+             <span class="n">grid_label</span><span class="o">=</span><span class="s1">&#39;gr&#39;</span><span class="p">,</span> <span class="n">member_id</span><span class="o">=</span><span class="s1">&#39;r1i1p1f1&#39;</span><span class="p">,</span> <span class="n">require_all_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;source_id&#39;</span><span class="p">])</span>
+
+<span class="n">rg_cat</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="o">**</span><span class="n">rg_query</span><span class="p">)</span>
+<span class="n">rg_cat</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, make the dictionaries with the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dset_dict</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">to_dataset_dict</span><span class="p">(</span><span class="n">zarr_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;use_cftime&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">dset_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rg_dset_dict</span> <span class="o">=</span> <span class="n">rg_cat</span><span class="o">.</span><span class="n">to_dataset_dict</span><span class="p">(</span><span class="n">zarr_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;use_cftime&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">rg_dset_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-some-functions-and-organize">
+<h2>Define some functions and organize<a class="headerlink" href="#define-some-functions-and-organize" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>First, let’s make a function to get the diagnostic of interest: the change in ocean heat uptake at the time of transient CO<span class="math notranslate nohighlight">\(_2\)</span> doubling compared to the pre-industrial control:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_tcr</span><span class="p">(</span><span class="n">ctrl_key</span><span class="p">,</span> <span class="n">expr_key</span><span class="p">):</span>
+    <span class="n">ds_1pct</span> <span class="o">=</span> <span class="n">dset_dict</span><span class="p">[</span><span class="n">expr_key</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">ds_piCl</span> <span class="o">=</span> <span class="n">dset_dict</span><span class="p">[</span><span class="n">ctrl_key</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">ds_tcr</span> <span class="o">=</span> <span class="n">ds_1pct</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="mi">59</span><span class="p">,</span> <span class="mi">12</span><span class="o">*</span><span class="mi">80</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">ds_piCl</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="mi">59</span><span class="p">,</span> <span class="mi">12</span><span class="o">*</span><span class="mi">80</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ds_tcr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the time slice is 20 years centered around year 70, which is when CO<span class="math notranslate nohighlight">\(_2\)</span> doubles in a 1pctCO2 experiment (<span class="math notranslate nohighlight">\(1.01^{70}\approx 2\)</span>). Just for convenience, we will also define a function that creates the xESMF regridder and performs the regridding. The regridder is specific to the input (<code class="docutils literal notranslate"><span class="pre">ds_in</span></code>) and output (<code class="docutils literal notranslate"><span class="pre">regrid_to</span></code>) grids, so it must be redefined for each model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">regrid</span><span class="p">(</span><span class="n">ds_in</span><span class="p">,</span> <span class="n">regrid_to</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">):</span>
+    <span class="n">regridder</span> <span class="o">=</span> <span class="n">xe</span><span class="o">.</span><span class="n">Regridder</span><span class="p">(</span><span class="n">ds_in</span><span class="p">,</span> <span class="n">regrid_to</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">periodic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ignore_degenerate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ds_out</span> <span class="o">=</span> <span class="n">regridder</span><span class="p">(</span><span class="n">ds_in</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ds_out</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, the following function takes the list of keys generated by Intake-ESM and splits them into two sorted lists of keys: one for the piControl experiment and another for 1pctCO2. This will work nicely with the <code class="docutils literal notranslate"><span class="pre">get_tcr()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sorted_split_list</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
+    <span class="n">c_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">e_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;piControl&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">c_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s1">&#39;1pctCO2&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">e_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Could not find experiment name in key:&#39;</span><span class="o">+</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">c_list</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">e_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s make the lists and look at them to make sure they are properly sorted:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ctrl_keys</span><span class="p">,</span> <span class="n">expr_keys</span> <span class="o">=</span> <span class="n">sorted_split_list</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dset_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ctrl_keys</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ctrl_keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\t\t</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">expr_keys</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="note">
+<h3>Note<a class="headerlink" href="#note" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>If you look at the <code class="docutils literal notranslate"><span class="pre">hfds</span></code> anomaly for SAM0-UNICON, you will see negative values around the North Atlantic, especially in the Labrador Sea and Denmark Strait. These are areas of deep water formation and ocean heat uptake. By the CMIP convention, as described in the <code class="docutils literal notranslate"><span class="pre">hfds</span></code> attributes, a negative <code class="docutils literal notranslate"><span class="pre">hfds</span></code> indicates an upward heat flux from the ocean to the atmosphere, so by physical reasoning, this data should have the opposite sign. We could do this manually, but for simplicity, let’s just remove the model from our analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dset_dict</span><span class="p">[</span><span class="s1">&#39;CMIP.SNU.SAM0-UNICON.1pctCO2.Omon.gn&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_tcr</span><span class="p">(</span><span class="s1">&#39;CMIP.SNU.SAM0-UNICON.piControl.Omon.gn&#39;</span><span class="p">,</span> <span class="s1">&#39;CMIP.SNU.SAM0-UNICON.1pctCO2.Omon.gn&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hfds</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ctrl_keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">expr_keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also remove AWI-CM because it raises a <code class="docutils literal notranslate"><span class="pre">MemoryError</span></code> that causes this notebook to fail to <a class="reference external" href="https://github.com/ProjectPythia/cookbook-actions/blob/main/.github/workflows/build-book.yaml">execute via binderbot</a>. Feel free to add it back if this notebook is being run locally.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ctrl_keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">expr_keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="regrid-the-data">
+<h2>Regrid the data<a class="headerlink" href="#regrid-the-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>First, we will define the output grid. It does not matter what the data actually is, since we just want the structure of the Dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rg_ds</span> <span class="o">=</span> <span class="n">rg_dset_dict</span><span class="p">[</span><span class="s1">&#39;CMIP.NCAR.CESM2.piControl.Omon.gr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">rg_ds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we create a new dictionary to store our regridded data. The for-loop goes through the two sorted lists of keys and tries to regrid each model. This allows us to avoid removing a model and rerunning the code every time there is an error.</p>
+<p>To summarize,</p>
+<ul class="simple">
+<li><p>Get the diagnostic of interest and try to regrid to a 1x1 lat-lon grid</p>
+<ul>
+<li><p>If that fails for any reason, print the error</p></li>
+<li><p>If the regridding is successful, add it to the new dictionary</p></li>
+</ul>
+</li>
+<li><p>Repeat for all models</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_regrid_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">success_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">model_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">ctrl_key</span><span class="p">,</span> <span class="n">expr_key</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ctrl_keys</span><span class="p">,</span> <span class="n">expr_keys</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ctrl_key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ds_tcr</span> <span class="o">=</span> <span class="n">get_tcr</span><span class="p">(</span><span class="n">ctrl_key</span><span class="o">=</span><span class="n">ctrl_key</span><span class="p">,</span> <span class="n">expr_key</span><span class="o">=</span><span class="n">expr_key</span><span class="p">)</span>
+        <span class="n">ds_tcr_hfds_regridded</span> <span class="o">=</span> <span class="n">regrid</span><span class="p">(</span><span class="n">ds_tcr</span><span class="p">,</span> <span class="n">rg_ds</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest_s2d&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hfds</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to regrid &#39;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s1">&#39;: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">ds_regrid_dict</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds_tcr_hfds_regridded</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">+</span><span class="s1">&#39; regridded and added to dictionary&#39;</span><span class="p">)</span>
+        <span class="n">success_count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">model_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">| &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">success_count</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">model_count</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; models successfully regridded! |</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>CESM2-FV2 fails because of some issue with the dimensions of the coordinates. If we remove <code class="docutils literal notranslate"><span class="pre">ignore_degenerate=True</span></code> from the regridder defined in <code class="docutils literal notranslate"><span class="pre">regrid()</span></code>, there may be a few more failures because of a degenerate element: a cell that has corners close enough that the cell collapses to a line or point.</p>
+<p>Now we concat the results into a single DataArray:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds_regrid_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">coord</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds_regrid_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">ds_out_regrid</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">objs</span><span class="o">=</span><span class="n">ds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">coord</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;concat_dim&#39;</span><span class="p">:</span><span class="s1">&#39;model&#39;</span><span class="p">})</span>
+<span class="n">ds_out_regrid</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-or-save-the-data">
+<h2>Plot or save the data<a class="headerlink" href="#plot-or-save-the-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The following function extends <code class="docutils literal notranslate"><span class="pre">lon</span></code> by one grid point, giving it the value of the first point. This fixes a bug/feature of Cartopy where a vertical white line will appear at the “seam” of the plot. For example, if you have a dataset with longitudes [-179.5, 179.5] and make a plot centered on the Pacific, there will likely be a white line at 180. This is only for improving the look of the plot, so if you are doing further analysis or exporting to netCDF, skip this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_cyclic_point</span><span class="p">(</span><span class="n">xarray_obj</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">period</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">period</span> <span class="o">=</span> <span class="n">xarray_obj</span><span class="o">.</span><span class="n">sizes</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">/</span> <span class="n">xarray_obj</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">dim</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">first_point</span> <span class="o">=</span> <span class="n">xarray_obj</span><span class="o">.</span><span class="n">isel</span><span class="p">({</span><span class="n">dim</span><span class="p">:</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)})</span>
+    <span class="n">first_point</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_point</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span><span class="o">+</span><span class="n">period</span>
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">xarray_obj</span><span class="p">,</span> <span class="n">first_point</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can take the ensemble mean and plot. Thanks to the work leading up to this point, it’s as simple as using Xarray’s <code class="docutils literal notranslate"><span class="pre">.mean()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmip6em_ohutcr</span> <span class="o">=</span> <span class="n">add_cyclic_point</span><span class="p">(</span><span class="n">ds_out_regrid</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;model&#39;</span><span class="p">),</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">360</span><span class="p">)</span>
+<span class="c1"># cmip6em_ohutcr.to_netcdf(&#39;cmip6_ohutcr.nc&#39;) # remove add_cyclic_point() and uncomment to save</span>
+<span class="n">cmip6em_ohutcr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>
+<span class="n">ax_mean</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=-</span><span class="mi">150</span><span class="p">))</span>
+<span class="n">mean_plot</span> <span class="o">=</span> <span class="n">ax_mean</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">cmip6em_ohutcr</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">cmip6em_ohutcr</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">cmip6em_ohutcr</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> 
+                             <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax_mean</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CMIP6 ensemble-mean $\Delta\mathrm</span><span class="si">{OHUTCR}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax_mean</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">ax_mean</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax_mean</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax_mean</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">LongitudeFormatter</span><span class="p">(</span><span class="n">zero_direction_label</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">ax_mean</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">LatitudeFormatter</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mean_plot</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;W m$^{-2}$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice how the heat uptake is highest in the subpolar oceans, especially the North Atlantic. From this multi-model ensemble mean, we can see that this is a robust feature of climate models (and likely the climate system itself) in response to a CO<span class="math notranslate nohighlight">\(_2\)</span> forcing. For more background and motivation, see <a class="reference external" href="https://journals.ametsoc.org/view/journals/clim/33/17/jcliD190642.xml">Hu et al. (2020)</a>.</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>This notebook demonstrates the use of xESMF to regrid the CMIP6 data hosted in Pangeo’s Google cloud storage. The regridded data allows us to use Xarray to take a multi-model mean, in this case, of changes in ocean heat uptake associated with each model’s transient climate response.</p>
+<section id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Other example workflows using this CMIP6 cloud data.</p>
+</section>
+</section>
+<section id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Hu, S., Xie, S.-P., &amp; Liu, W. (2020). Global Pattern Formation of Net Ocean Surface Heat Flux Response to Greenhouse Warming. Journal of Climate, 33(17), 7503–7522. <a class="reference external" href="https://doi.org/10.1175/JCLI-D-19-0642.1">https://doi.org/10.1175/JCLI-D-19-0642.1</a></p>
+<p>Xie, S.-P. (2020). Ocean warming pattern effect on global and regional climate change. AGU Advances, 1, e2019AV000130. <a class="reference external" href="https://doi.org/10.1029/2019AV000130">https://doi.org/10.1029/2019AV000130</a></p>
+<p>Parts of this workflow were taken from a similar workflow in <a class="reference external" href="https://nordicesmhub.github.io/forces-2021/learning/example-notebooks/xesmf_regridding.html">this notebook by NordicESMhub</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/example-workflows"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="precip-freq.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Precipitation Frequency Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="esgf2-arm-comparison.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compare Data from ESGF and ARM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                  </footer>
+                
+              </div>
+
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-the-data">Access the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-some-functions-and-organize">Define some functions and organize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note">Note</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regrid-the-data">Regrid the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-or-save-the-data">Plot or save the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/cmip6-cookbook/main?urlpath=lab/tree/notebooks/example-workflows/xesmf-ohu.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://nimbus6.llnl.gov/hub/user-redirect/git-pull?repo=https%3A//github.com/ProjectPythia/cmip6-cookbook&urlpath=lab/tree/cmip6-cookbook/notebooks/example-workflows/xesmf-ohu.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cmip6-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cmip6-cookbook/edit/main/notebooks/example-workflows/xesmf-ohu.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cmip6-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/example-workflows/xesmf-ohu.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/example-workflows/xesmf-ohu.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ryan Abernathey, Henri Drake, Robert Ford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 1 April 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2024.
+        
+          By Ryan Abernathey, Henri Drake, Robert Ford.
+        
+          Last updated on 1 April 2024.
+        </p>
+      </div>
+    </div>
+  </div></div>
+      
+      </div>
+    </div>
+  
+
+  </footer>
+  </body>
+</html>
