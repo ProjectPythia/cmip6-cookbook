@@ -33,5 +33,6 @@ dependencies:
   - globus-compute-sdk
   - pip
   - sphinx-pythia-theme
+  - ipywidgets
   - pip:
       - git+https://github.com/nocollier/intake-esgf
