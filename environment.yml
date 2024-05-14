@@ -31,6 +31,7 @@ dependencies:
   - jupyterlab
   - jupyter_server
   - globus-compute-sdk
+  - ipywidgets
   - pip
   - sphinx-pythia-theme
   - ipywidgets
