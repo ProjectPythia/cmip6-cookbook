@@ -52,7 +52,7 @@ sphinx:
           type: fontawesome
       launch_buttons:
         binderhub_url: https://binder.projectpythia.org
-        jupyterhub_url: https://nimbus6.llnl.gov
+        jupyterhub_url: https://nimbus.llnl.gov
         notebook_interface: jupyterlab
       logo:
         link: https://projectpythia.org
