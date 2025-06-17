@@ -7,18 +7,13 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  ARM_USERNAME: ${{ secrets.ARM_USERNAME }}
-  ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
-
 jobs:
   build:
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
-    secrets:
-      ARM_USERNAME: ${{ secrets.ARM_USERNAME }}
-      ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
+    with:
+      build_command: 'myst build --execute --html'
+
 
   deploy:
     needs: build
     uses: ProjectPythia/cookbook-actions/.github/workflows/deploy-book.yaml@main
-  

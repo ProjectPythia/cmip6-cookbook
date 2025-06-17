@@ -33,7 +33,11 @@ project:
         - file: notebooks/example-workflows/gmst.ipynb
         - file: notebooks/example-workflows/precip-freq.ipynb
         - file: notebooks/example-workflows/xesmf-ohu.ipynb
-    
+  jupyter:
+      binder:
+        url: https://binder.projectpythia.org/
+        repo: projectpythia-mystmd/cmip6-cookbook
+        ref: main
 site:
   template: book-theme
   # options:
