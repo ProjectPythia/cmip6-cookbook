@@ -1,7 +1,7 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 extends:
-  - https://raw.githubusercontent.com/projectpythia-mystmd/pythia-config/main/pythia.yml
+  - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
 project:
   id: e2f37f9f-71cd-417e-8302-3fb52caa76c4
   title: CMIP6 Cookbook
@@ -9,11 +9,12 @@ project:
   # description:
   # keywords: []
   # authors: []
-  github: https://github.com/projectpythia-mystmd/cmip6-cookbook
+  github: https://github.com/projectpythia/cmip6-cookbook
   authors:
     - name: Ryan Abernathey
     - name: Henri Drake
     - name: Robert Ford
+    - name: Max Grover
   copyright: '2024'
   # To autogenerate a Table of Contents, run "myst init --write-toc"
   toc:
@@ -36,7 +37,7 @@ project:
   jupyter:
       binder:
         url: https://binder.projectpythia.org/
-        repo: projectpythia-mystmd/cmip6-cookbook
+        repo: projectpythia/cmip6-cookbook
         ref: main
 site:
   template: book-theme
