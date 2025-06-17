@@ -2,10 +2,11 @@ name: trigger-book-build
 on:
   pull_request:
 
-# instead of calling build-book directly, we will create and upload an artifact containing the source (minus .github directory)
-
 jobs:
-  get-code:
-    uses: ProjectPythia/cookbook-actions/.github/workflows/get-code.yaml@main
+  build:
+    uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
     with:
-      code_artifact_name: code-zip-${{ github.event.number }}
+      build_command: 'myst build --execute --html'
+      artifact_name: book-zip-${{ github.event.number }}
+      base_url: '/${{ github.event.repository.name }}/_preview/${{ github.event.number }}'
+      # Other input options are possible, see ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml

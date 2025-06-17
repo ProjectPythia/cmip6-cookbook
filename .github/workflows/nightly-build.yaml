@@ -3,20 +3,20 @@ name: nightly-build
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # Daily “At 00:00”
-
-env:
-  ARM_USERNAME: ${{ secrets.ARM_USERNAME }}
-  ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
+    - cron: "0 0 * * *" # Daily “At 00:00”
 
 jobs:
   build:
     if: ${{ github.repository_owner == 'ProjectPythia' }}
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
-    secrets:
-      ARM_USERNAME: ${{ secrets.ARM_USERNAME }}
-      ARM_PASSWORD: ${{ secrets.ARM_PASSWORD }}
+    with:
+      build_command: 'myst build --execute --html'
 
-  link-check:
-    if: ${{ github.repository_owner == 'ProjectPythia' }}
-    uses: ProjectPythia/cookbook-actions/.github/workflows/link-checker.yaml@main
+  deploy:
+    needs: build
+    uses: ProjectPythia/cookbook-actions/.github/workflows/deploy-book.yaml@main
+
+#   We don't have a link-checker with MyST right now
+#   link-check:
+#     if: ${{ github.repository_owner == 'ProjectPythia' }}
+#     uses: ProjectPythia/cookbook-actions/.github/workflows/link-checker.yaml@main
