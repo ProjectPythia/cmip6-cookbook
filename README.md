@@ -1,6 +1,6 @@
-<img src="notebooks/images/cmip6-logo.webp" width=500 alt="CMIP6 logo"></img>
-
 # CMIP6 Cookbook
+
+<img src="notebooks/images/cmip6-logo.webp" width=500 alt="CMIP6 logo"></img>
 
 [![nightly-build](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cmip6-cookbook.git/main)

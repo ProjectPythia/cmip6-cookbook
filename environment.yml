@@ -34,7 +34,6 @@ dependencies:
   - mystmd
   - ipywidgets
   - pip
-  - sphinx-pythia-theme
   - ipywidgets
   - pip:
       - git+https://github.com/nocollier/intake-esgf
