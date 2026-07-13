@@ -1,9 +1,8 @@
 name: cmip6-cookbook-dev
 channels:
   - conda-forge
-  - pyviz
 dependencies:
-  - python<3.12
+  - python
   - numpy
   - matplotlib
   - pandas
@@ -20,20 +19,12 @@ dependencies:
   - fsspec
   - cftime
   - nc-time-axis
-  - globus-compute-endpoint
   - gcsfs
   - act-atmos
   - seaborn
-  - esgf-pyclient
   - hvplot
   - holoviews
-  - jupyter-book
   - jupyterlab
-  - jupyter_server
-  - globus-compute-sdk
   - mystmd
+  - jupyterlab-myst
   - ipywidgets
-  - pip
-  - ipywidgets
-  - pip:
-      - git+https://github.com/nocollier/intake-esgf
