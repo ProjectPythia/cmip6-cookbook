@@ -8,10 +8,10 @@
     <loc>http://localhost:3000/notebooks/how-to-cite</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/foundations/intake-esm</loc>
+    <loc>http://localhost:3000/notebooks/foundations/google-cloud-basic</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/foundations/google-cloud-basic</loc>
+    <loc>http://localhost:3000/notebooks/foundations/intake-esm</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/foundations/esgf-opendap</loc>
