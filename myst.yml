@@ -25,8 +25,8 @@ project:
         - file: notebooks/how-to-cite.md
     - title: Foundations
       children:
-        - file: notebooks/foundations/intake-esm.ipynb
         - file: notebooks/foundations/google-cloud-basic.ipynb
+        - file: notebooks/foundations/intake-esm.ipynb
         - file: notebooks/foundations/esgf-opendap.ipynb
     - title: Example workflows
       children:
