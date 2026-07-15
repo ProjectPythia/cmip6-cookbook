@@ -27,7 +27,6 @@ project:
       children:
         - file: notebooks/foundations/google-cloud-basic.ipynb
         - file: notebooks/foundations/intake-esm.ipynb
-        - file: notebooks/foundations/esgf-opendap.ipynb
     - title: Example workflows
       children:
         - file: notebooks/example-workflows/ecs-cmip6.ipynb
