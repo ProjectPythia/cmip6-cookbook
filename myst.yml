@@ -32,3 +32,9 @@ project:
         url: https://binder.projectpythia.org/
         repo: projectpythia/cmip6-cookbook
         ref: main
+  error_rules:
+    - rule: link-resolves
+      severity: ignore
+      keys:
+        - 'https://doi.org/**'
+        - 'https://unece.org/fileadmin/**'
