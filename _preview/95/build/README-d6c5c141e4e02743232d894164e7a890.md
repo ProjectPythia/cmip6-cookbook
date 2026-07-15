@@ -4,7 +4,7 @@
 
 [![nightly-build](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cmip6-cookbook/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cmip6-cookbook.git/main)
-[![DOI](https://zenodo.org/badge/507993770.svg)](https://zenodo.org/badge/latestdoi/507993770)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8075798.svg)](https://doi.org/10.5281/zenodo.8075798)
 
 This Project Pythia Cookbook covers examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
 
@@ -30,7 +30,7 @@ With such a large amount of model output produced, moving the data around is ine
 
 ### Foundations
 
-This section includes three variations of accessing CMIP6 data from cloud storage.
+This section demonstrates a few ways to  access CMIP6 data from cloud storage.
 
 ### Example workflows
 

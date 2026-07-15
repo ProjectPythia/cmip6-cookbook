@@ -14,9 +14,6 @@
     <loc>http://localhost:3000/notebooks/foundations/intake-esm</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/foundations/esgf-opendap</loc>
-  </url>
-  <url>
     <loc>http://localhost:3000/notebooks/example-workflows/ecs-cmip6</loc>
   </url>
   <url>
