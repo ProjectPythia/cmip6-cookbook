@@ -30,7 +30,7 @@ With such a large amount of model output produced, moving the data around is ine
 
 ### Foundations
 
-This section demonstrates a few ways to  access CMIP6 data from cloud storage.
+This section demonstrates a few ways to access CMIP6 data from cloud storage.
 
 ### Example workflows
 
