@@ -4,4 +4,4 @@ The material in Project Pythia's CMIP6 Cookbook is licensed for free and open co
 
 The source code for the book is [released on GitHub](https://github.com/ProjectPythia/cookbook-template) and archived on Zenodo. This DOI will always resolve to the latest release of the book source:
 
-[![DOI](https://zenodo.org/badge/507993770.svg)](https://zenodo.org/badge/latestdoi/507993770)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8075798.svg)](https://doi.org/10.5281/zenodo.8075798)
