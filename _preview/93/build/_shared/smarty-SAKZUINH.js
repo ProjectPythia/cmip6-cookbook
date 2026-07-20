@@ -1,1 +1,0 @@
-import{a}from"/cmip6-cookbook/_preview/93/build/_shared/chunk-GJ5C453A.js";import"/cmip6-cookbook/_preview/93/build/_shared/chunk-J3PKFMLQ.js";import"/cmip6-cookbook/_preview/93/build/_shared/chunk-OZE3FFNP.js";export default a();
